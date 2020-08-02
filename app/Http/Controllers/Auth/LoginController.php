@@ -41,6 +41,5 @@ class LoginController extends Controller
         $user = User::find($data->id_user);
         $reponData = array('user' => $user);
         return  response()->json($reponData, 200);
-
     }
 }
