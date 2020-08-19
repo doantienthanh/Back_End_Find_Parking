@@ -22,3 +22,10 @@ Route::post('/user/login','Auth\LoginController@Login');
 Route::post('/user/getProfile','Auth\LoginController@getProfileUser');
 // Register
 Route::post('/user/register','Auth\RegisterController@register');
+//User
+Route::post('/keeper/addparking','User\KeeperController@addParking');
+Route::post('/keeper/getparking','User\KeeperController@getAllParks');
+Route::delete('/keeper/parking/{id}/delete','User\KeeperController@deleteParking');
+Route::get('/getAllData','Admin\IndexController@getAllDataParks');
+Route::get('/park/{id}/get','User\KeeperController@getParkUpdate');
+Route::Patch('/park/{id}/edit','User\KeeperController@updatePark');

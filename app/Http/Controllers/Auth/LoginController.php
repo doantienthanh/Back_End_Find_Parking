@@ -42,4 +42,5 @@ class LoginController extends Controller
         $reponData = array('user' => $user);
         return  response()->json($reponData, 200);
     }
+
 }
