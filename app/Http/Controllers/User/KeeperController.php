@@ -13,6 +13,8 @@ class KeeperController extends Controller
     function addParking(REQUEST $request)
     {
         $user_id = $request->id_user;
+        $myKey = 'doantienthanh200520000946613608';
+        $id_hacked = JWT::decode($user_id, $myKey, array('HS256'));
         $name = $request->name;
         $location = $request->location;
         $area = $request->area;
@@ -28,7 +30,7 @@ class KeeperController extends Controller
             return  response()->json($reponData, 400);
         } else {
             $newParking = new Park();
-            $newParking->id_user = $user_id;
+            $newParking->id_user = $id_hacked->id_user;
             $newParking->name = $name;
             $newParking->address = $location;
             $newParking->area = $area;
@@ -38,8 +40,7 @@ class KeeperController extends Controller
             $reponData=array('');
             return  response()->json($reponData, 200);
         }
-    }
-
+ }
     function getAllParks(){
         $token = request()->header('Authorization');
         $myKey = 'doantienthanh200520000946613608';
@@ -51,6 +52,9 @@ class KeeperController extends Controller
         }else{
             return  response()->json($parks, 200);
         }
+
+
+
     }
     //Function delete Parking
     function deleteParking($id){
@@ -78,5 +82,11 @@ class KeeperController extends Controller
         $park->description = $description;
         $park->save();
         return  response()->json($park,200);
+    }
+    // add
+    function searchPlace(REQUEST $request){
+        $input=$request->inpuSearch;
+        $arr=array('ad'=>$input);
+        return  response()->json($arr,200);
     }
 }

@@ -29,3 +29,4 @@ Route::delete('/keeper/parking/{id}/delete','User\KeeperController@deleteParking
 Route::get('/getAllData','Admin\IndexController@getAllDataParks');
 Route::get('/park/{id}/get','User\KeeperController@getParkUpdate');
 Route::Patch('/park/{id}/edit','User\KeeperController@updatePark');
+Route::Post('/user/search','User\KeeperController@searchPlace');
